@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'product.dart';
+import 'entity/product.dart';
 
 void main() {
 
@@ -36,9 +36,7 @@ void main() {
       case 2:
 
         stdout.write("Enter ID: ");
-        int id = int.parse(
-            stdin.readLineSync()!
-        );
+        String id = stdin.readLineSync()!;
 
         stdout.write("Enter Name: ");
         String name = stdin.readLineSync()!;
@@ -51,7 +49,7 @@ void main() {
             stdin.readLineSync()!
         );
 
-        Product.addProduct(
+        Product.add(
 
           Product(
             id: id,
@@ -68,11 +66,9 @@ void main() {
 
         stdout.write("Enter ID delete: ");
 
-        int deleteId = int.parse(
-            stdin.readLineSync()!
-        );
+        String deleteId = stdin.readLineSync()!;
 
-        Product.deleteProduct(deleteId);
+        Product.delete(deleteId);
 
         break;
 
@@ -81,13 +77,15 @@ void main() {
 
         stdout.write("Enter ID update: ");
 
-        int updateId = int.parse(
-            stdin.readLineSync()!
-        );
+        String updateId = stdin.readLineSync()!;
 
         stdout.write("Enter new name: ");
 
         String newName = stdin.readLineSync()!;
+
+        stdout.write("Enter new image: ");
+
+        String newImage = stdin.readLineSync()!;
 
         stdout.write("Enter new price: ");
 
@@ -95,10 +93,14 @@ void main() {
             stdin.readLineSync()!
         );
 
-        Product.updateProduct(
-          updateId,
-          newName,
-          newPrice,
+        Product.edit(
+
+          Product(
+            id: updateId,
+            name: newName,
+            image: newImage,
+            price: newPrice,
+          ),
         );
 
         break;
@@ -131,7 +133,7 @@ void main() {
     // Sort ASC
       case 6:
 
-        var asc = Product.sortByPriceAsc();
+        var asc = Product.sortPriceAsc();
 
         for (var p in asc) {
 
@@ -145,7 +147,7 @@ void main() {
     // Sort DESC
       case 7:
 
-        var desc = Product.sortByPriceDesc();
+        var desc = Product.sortPriceDesc();
 
         for (var p in desc) {
 
