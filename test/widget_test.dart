@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 
-import 'package:lab1/main.dart';
+import 'package:lab1/main2.dart';
 
 void main() {
 
